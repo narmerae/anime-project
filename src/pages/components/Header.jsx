@@ -16,11 +16,11 @@ const Header = () => {
         <div>
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="#home">NarmerUI</Navbar.Brand>
+                    <Navbar.Brand href="/">NarmerUI</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/anime">Anime List</Nav.Link>
-                        <Nav.Link href="#pricing">About</Nav.Link>
+                        <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
