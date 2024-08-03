@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn.myanimelist.net']
+    domains: ['cdn.myanimelist.net', 'm.media-amazon.com', 'imgsrv.crunchyroll.com']
   }
 };
 
