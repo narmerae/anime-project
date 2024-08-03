@@ -1,64 +1,45 @@
 import React from 'react';
-import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Card, Col, Container, Row, Button } from 'react-bootstrap';
+import Image from 'next/image';
+import Link from "next/link";
 const LandingPage = () => {
   return (
-      <div className={"container-fluid vh-100"}>
-        <Container fluid className="d-flex justify-content-center align-items-center flex-column bg-light p-5">
-          <Row className="justify-content-center">
-            <Col md={8} className="text-center">
-              <h1 className="display-4">Welcome to Narmer&apos;s AnimeList</h1>
-              <p className="lead">Discover and track your favorite anime.</p>
-              <Button variant="primary" size="lg">Get Started</Button>
-            </Col>
-          </Row>
-          <Row className="mt-5">
-            <Col md={4}>
-              <Card>
-                <div className={"imgContainer"}>
-                  <Card.Img variant="top" src="https://cdn.myanimelist.net/images/anime/12/52091.jpg"/>
-                </div>
-                <Card.Body>
-                  <Card.Title>Popular Anime</Card.Title>
-                  <Card.Text>
-                    Explore the most popular anime series and movies.
-                  </Card.Text>
-                  <Button variant="primary">View More</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4}>
-              <Card>
-                <div className={"imgContainer"}>
-                  <Card.Img variant="top" src="https://cdn.myanimelist.net/images/anime/12/52091.jpg"  />
-                </div>
-                <Card.Body>
-                  <Card.Title>New Releases</Card.Title>
-                  <Card.Text>
-                    Stay updated with the latest anime releases.
-                  </Card.Text>
-                  <Button variant="primary">View More</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={4}>
-              <Card>
-                <div className={"imgContainer d-flex justify-content-center align-items-center flex-column bg-light"}>
-                  <Card.Img variant="top" src="https://cdn.myanimelist.net/images/anime/12/52091.jpg"/>
-                </div>
-                <Card.Body>
-                  <Card.Title>Top Rated</Card.Title>
-                  <Card.Text>
-                    Check out the top-rated anime by fans.
-                  </Card.Text>
-                  <Button variant="primary">View More</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+      <Container fluid className="min-vh-100 d-flex flex-column justify-content-center align-items-center bg-light">
+        <Row className="justify-content-center">
+          <Col md={8} className="text-center mb-5"> {/* Adjusted column width and added margin-bottom */}
+            <h1 className="display-4 fw-bold mb-3">Welcome to Narmer&apos;s AnimeList</h1>
+            <p className="lead">Discover and track your favorite anime.</p>
+            <Button variant="primary" size="lg" className="px-4">Get Started</Button>
+          </Col>
+        </Row>
+
+        <Row className="justify-content-center">
+          {[
+            { title: "Popular Anime", img: "https://m.media-amazon.com/images/M/MV5BZTI0MDA5MWUtMWMyYS00NWM3LWE5ZmYtYTUxZmMxMGE5Y2IwXkEyXkFqcGdeQXVyNTIxNDgzOTg@._V1_.jpg" },
+            { title: "New Releases", img: "https://cdn.myanimelist.net/images/anime/1885/127108l.jpg" },
+            { title: "Top Rated", img: "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/30fc6bf31dd77e6ffd536dd9f226d917.jpe" },
+          ].map(({ title, img }, index) => (
+              <Col key={index} md={4} className="mb-4">
+                  <Link href={'/anime'}>
+                    <Card className={`h-100 shadow position-relative overflow-hidden card-hover`}>
+                      <Image
+                          src={img}
+                          alt={title}
+                          className="card-img-top rounded-top"
+                          width={500}
+                          height={300}
+
+                      />
+                      <div className={`card-body-overlay`}>
+                        <h3>{title}</h3>
+                      </div>
+                    </Card>
+                  </Link>
+              </Col>
+          ))}
+        </Row>
+      </Container>
   );
 };
 
